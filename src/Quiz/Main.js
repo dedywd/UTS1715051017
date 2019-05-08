@@ -3,6 +3,13 @@ import { StyleSheet, Text,TextInput, View, Button} from 'react-native';
 import Header from './Header';
 
 export default class Main extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      nama:''
+    }
+  }
+
   render() {
     return (
       <View style={styles.vMain} >
@@ -21,9 +28,21 @@ export default class Main extends React.Component {
               color="#f44336"
               accessibilityLabel="Aplikasi Kasir"/>
           </View>
+
+          <View style={styles.itemButton}>
+          <TextInput style={styles.txtInput} keyboardType = 'default'
+          placeholder ='Masukkan Nama'
+          onChangeText = {
+            (txtNama) => this.setState({nama:txtNama})
+          }/>
+          </View>
+
           <View style={styles.itemButton}>
           <Button
-              onPress={() => this.props.navigation.navigate('Layar2')}
+              onPress={() => this.props.navigation.navigate('Layar2',{
+                nama: this.state.nama
+              }
+            )}
               title="       Tentang Saya       "
               color="#f44336"
               accessibilityLabel="Tentang Saya"/>
@@ -60,6 +79,14 @@ vButton:{
  itemButton:{
    flexDirection:'row',
    padding:20,
+ },
+
+ txtInput: {
+ flex:4,
+ height:40,
+ backgroundColor:'#fff',
+ borderColor: 'gray',
+ borderWidth: 1
  },
 
 });

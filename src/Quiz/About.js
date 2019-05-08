@@ -4,7 +4,11 @@ import Header from './Header';
 
 
 export default class About extends React.Component {
+
   render() {
+    const { navigation } = this.props;
+    const nama = navigation.getParam('nama');
+
     return (
       <View style={styles.vMain} >
 
@@ -17,7 +21,7 @@ export default class About extends React.Component {
           <View style={styles.vItemAbout}>
             <Image style={styles.gambar} source={require('../images/bio.jpg')}/>
             <View style={styles.vBiodata}>
-              <Text style={styles.textBio}>Nama: I Putu Dedy Wira Darmawan</Text>
+              <Text style={styles.textBio}><Text>nama: {JSON.stringify(nama)}</Text></Text>
               <Text style={styles.textBio}>Tanggal Lahir: 28 Juni 1999</Text>
               <Text style={styles.textBio}>Alamat: Singaraja</Text>
             </View>
@@ -54,13 +58,16 @@ const styles = StyleSheet.create({
  },
 
  gambar: {
-   flex: 2,
+   flex: 1,
    backgroundColor: 'white',
-   margin: 15
+   margin: 15,
+   height: 160,
+   width: 160,
+   borderRadius: 100
  },
 
  vBiodata: {
-   flex: 2,
+   flex: 1,
    backgroundColor: 'white',
    marginTop: 15
  },
